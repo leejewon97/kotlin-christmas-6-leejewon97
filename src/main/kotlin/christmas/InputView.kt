@@ -1,6 +1,7 @@
 package christmas
 
 import camp.nextstep.edu.missionutils.Console
+import christmas.enumeration.December
 import christmas.enumeration.InputPhrase
 
 class InputView {
@@ -19,6 +20,6 @@ class InputView {
     }
 
     private fun invalidDate(date: Int?): Boolean {
-        return date !in 1..31
+        return date !in December.FIRST.date..December.LAST.date
     }
 }
