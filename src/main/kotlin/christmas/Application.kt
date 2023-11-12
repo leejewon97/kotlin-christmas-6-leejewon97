@@ -1,5 +1,7 @@
 package christmas
 
+import christmas.enumeration.OutputPhrase
+
 fun main() {
-    TODO("프로그램 구현")
+    println(OutputPhrase.HI.text)
 }
