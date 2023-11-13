@@ -19,6 +19,20 @@ class InputView {
         return date!!
     }
 
+    fun readMenu(): String {
+        println(InputPhrase.MENU.text)
+        val menu = Console.readLine()
+        if (invalidMenu(menu)) {
+            try {
+                throw IllegalArgumentException(InputPhrase.ERROR_MENU.text)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+                return readMenu()
+            }
+        }
+        return menu
+    }
+
     private fun invalidDate(date: Int?): Boolean {
         return date !in December.FIRST.date..December.LAST.date
     }
