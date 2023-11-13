@@ -1,7 +1,7 @@
 package christmas
 
-import christmas.enumeration.DDayDiscount
 import christmas.enumeration.December
+import christmas.enumeration.Discount
 
 class Christmas {
     private val visitDate = InputView().readDate()
@@ -10,9 +10,9 @@ class Christmas {
 
     private fun christmasDDayDiscount(visitDate: Int) = when (visitDate) {
         in December.FIRST.date..December.CHRISTMAS.date ->
-            DDayDiscount.START_DISCOUNT.value + visitDate * DDayDiscount.PER_DAY_DISCOUNT.value
+            Discount.START_DISCOUNT.value + visitDate * Discount.PER_DAY_DISCOUNT.value
 
-        else -> DDayDiscount.NO_DISCOUNT.value
+        else -> Discount.NO_DISCOUNT.value
     }
 
     private fun isWeekend(visitDate: Int) =
