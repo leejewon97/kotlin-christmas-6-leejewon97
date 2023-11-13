@@ -7,6 +7,7 @@ class Christmas {
     private val visitDate = InputView().readDate()
     private val christmasDDayDiscount = christmasDDayDiscount(visitDate)
     private val isWeekend = isWeekend(visitDate)
+    private val specialDiscount = specialDiscount(visitDate)
 
     private fun christmasDDayDiscount(visitDate: Int) = when (visitDate) {
         in December.FIRST.date..December.CHRISTMAS.date ->
@@ -17,4 +18,9 @@ class Christmas {
 
     private fun isWeekend(visitDate: Int) =
         visitDate % December.WHOLE_WEEK.date in December.FIRST_WEEKEND.date..December.SECOND_WEEKEND.date
+
+    private fun specialDiscount(visitDate: Int) = when {
+        visitDate == December.CHRISTMAS.date || visitDate % December.WHOLE_WEEK.date == December.FIRST_WEEKEND.date -> Discount.SPECIAL_DISCOUNT.value
+        else -> Discount.NO_DISCOUNT.value
+    }
 }
