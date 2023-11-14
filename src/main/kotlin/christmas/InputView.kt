@@ -19,7 +19,7 @@ class InputView {
         return date!!
     }
 
-    fun readMenu(): String {
+    fun readMenu(): Map<String, Int> {
         println(InputPhrase.MENU.text)
         val menu = Console.readLine()
         if (invalidMenu(menu)) {
@@ -30,7 +30,7 @@ class InputView {
                 return readMenu()
             }
         }
-        return menu
+        return menuToMap(menu)
     }
 
     private fun invalidDate(date: Int?): Boolean {
