@@ -42,9 +42,9 @@ class Christmas {
 
     private fun dayOfWeekDiscount() {
         orders.forEach { (menu, quantity) ->
-            if (isWeekend && Menus.valueOf(menu).type == Menus.MenuType.DESSERT) {
+            if (isWeekend && Menus.entries.find { it.menu == menu }!!.type == Menus.MenuType.DESSERT) {
                 dayOfWeekDiscount += Discount.DAY_OF_WEEK_DISCOUNT.price * quantity
-            } else if (!isWeekend && Menus.valueOf(menu).type == Menus.MenuType.MAIN) {
+            } else if (!isWeekend && Menus.entries.find { it.menu == menu }!!.type == Menus.MenuType.MAIN) {
                 dayOfWeekDiscount += Discount.DAY_OF_WEEK_DISCOUNT.price * quantity
             }
         }
@@ -68,7 +68,7 @@ class Christmas {
     private fun calculateTotalPrice(): Int {
         var totalPrice = 0
         orders.forEach { (menu, quantity) ->
-            totalPrice += Menus.valueOf(menu).price * quantity
+            totalPrice += Menus.entries.find { it.menu == menu }!!.price * quantity
         }
         return totalPrice
     }
