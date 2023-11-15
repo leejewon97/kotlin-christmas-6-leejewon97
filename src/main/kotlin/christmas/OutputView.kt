@@ -36,9 +36,21 @@ class OutputView {
         }
     }
 
-    fun printDiscountList() {
+    private fun dayOfWeekDiscountPhrase(isWeekend: Boolean) = when (isWeekend) {
+        true -> OutputPhrase.Discount.WEEKEND.text
+        else -> OutputPhrase.Discount.WEEKDAY.text
+    }
+
+    fun printDiscounts(isWeekend: Boolean, discounts: List<Int>) {
         println(OutputPhrase.DISCOUNT_LIST.text)
-        // ...
+        discounts.forEachIndexed { index, discount ->
+            when (index) {
+                0 -> println("${OutputPhrase.Discount.CHRISTMAS_D_DAY.text} ${formatPrice(discount)}${OutputPhrase.PRICE_UNIT.text}")
+                1 -> println("${dayOfWeekDiscountPhrase(isWeekend)} ${formatPrice(discount)}${OutputPhrase.PRICE_UNIT.text}")
+                2 -> println("${OutputPhrase.Discount.SPECIAL.text} ${formatPrice(discount)}${OutputPhrase.PRICE_UNIT.text}")
+                3 -> println("${OutputPhrase.Discount.PRESENT.text} ${formatPrice(discount)}${OutputPhrase.PRICE_UNIT.text}")
+            }
+        }
     }
 
     fun printTotalDiscountPrice() {
