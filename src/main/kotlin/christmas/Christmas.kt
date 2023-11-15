@@ -20,6 +20,10 @@ class Christmas {
         OutputView().printMenu(orders)
         OutputView().printBeforeDiscountTotalPrice(totalPrice)
         OutputView().printPresentMenu(presentDiscount)
+        OutputView().printDiscounts(
+            isWeekend,
+            listOf(christmasDDayDiscount, dayOfWeekDiscount, specialDiscount, presentDiscount)
+        )
     }
 
     private fun refreshDiscount() {
