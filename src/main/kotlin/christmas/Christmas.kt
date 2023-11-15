@@ -8,6 +8,7 @@ class Christmas {
     private val christmasDDayDiscount = christmasDDayDiscount(visitDate)
     private val isWeekend = isWeekend(visitDate)
     private val specialDiscount = specialDiscount(visitDate)
+    private val orders = InputView().readOrdersText()
 
     private fun christmasDDayDiscount(visitDate: Int) = when (visitDate) {
         in December.FIRST.date..December.CHRISTMAS.date ->
