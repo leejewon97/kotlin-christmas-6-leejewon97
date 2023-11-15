@@ -14,7 +14,7 @@ class Invalid {
                 overMaxQuantity(orders) || onlyDrink(orders) || notDistinctedMenu(orders)
     }
 
-    private fun invalidMenu(menu: String): Boolean =
+    private fun invalidMenu(menu: String) =
         !Menus.entries.map { it.menu }.contains(menu)
 
     private fun invalidFormat(order: String) =
