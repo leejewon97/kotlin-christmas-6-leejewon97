@@ -24,6 +24,7 @@ class Christmas {
         OutputView().printDiscounts(isWeekend, discounts)
         OutputView().printTotalDiscountPrice(discounts)
         OutputView().printAfterDiscountTotalPrice(totalPrice, discounts, presentDiscount)
+        OutputView().printDecemberEventBadge(discounts)
     }
 
     private fun refreshDiscount() {
