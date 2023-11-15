@@ -20,10 +20,9 @@ class Christmas {
         OutputView().printMenu(orders)
         OutputView().printBeforeDiscountTotalPrice(totalPrice)
         OutputView().printPresentMenu(presentDiscount)
-        OutputView().printDiscounts(
-            isWeekend,
-            listOf(christmasDDayDiscount, dayOfWeekDiscount, specialDiscount, presentDiscount)
-        )
+        val discounts = listOf(christmasDDayDiscount, dayOfWeekDiscount, specialDiscount, presentDiscount)
+        OutputView().printDiscounts(isWeekend, discounts)
+        OutputView().printTotalDiscountPrice(discounts)
     }
 
     private fun refreshDiscount() {
