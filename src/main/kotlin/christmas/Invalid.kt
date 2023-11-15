@@ -11,7 +11,12 @@ class Invalid {
     fun orders(ordersText: String): Boolean {
         val orders = ordersText.split(",")
         return orders.any { invalidFormat(it) || invalidMenu(it.split("-")[0]) || invalidQuantity(it.split("-")[1]) } ||
-                overMaxQuantity(orders) || onlyDrink(orders) || notDistinctedMenu(orders)
+                overMaxQuantity(orders) || onlyDrink(orders) || notDistinctiveMenu(orders)
+    }
+
+    private fun notDistinctiveMenu(orders: List<String>): Boolean {
+        val menus = orders.map { it.split("-")[0] }
+        return menus.size != menus.distinct().size
     }
 
     private fun onlyDrink(orders: List<String>) = orders.map { it.split("-")[0] }.all { menu ->
