@@ -74,8 +74,14 @@ class OutputView {
         println("${formatPrice(totalPrice - discounts.sum() - presentDiscount)}${OutputPhrase.PRICE_UNIT.text}")
     }
 
-    fun printDecemberEventBadge() {
+    fun printDecemberEventBadge(discounts: List<Int>) {
         println(OutputPhrase.DECEMBER_EVENT_BADGE.text)
-        // ...
+        val totalDiscountPrice = discounts.sum()
+        when {
+            totalDiscountPrice >= OutputPhrase.Badge.SANTA.price -> println(OutputPhrase.Badge.SANTA.badgeName)
+            totalDiscountPrice >= OutputPhrase.Badge.TREE.price -> println(OutputPhrase.Badge.TREE.badgeName)
+            totalDiscountPrice >= OutputPhrase.Badge.STAR.price -> println(OutputPhrase.Badge.STAR.badgeName)
+            else -> println(OutputPhrase.NOTHING.text)
+        }
     }
 }
