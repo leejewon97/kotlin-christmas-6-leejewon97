@@ -68,7 +68,7 @@ class Christmas {
         visitDate % December.WHOLE_WEEK.date in December.FIRST_WEEKEND.date..December.SECOND_WEEKEND.date
 
     private fun specialDiscount(visitDate: Int) = when {
-        visitDate == December.CHRISTMAS.date || visitDate % December.WHOLE_WEEK.date == December.FIRST_WEEKEND.date -> Discount.SPECIAL_DISCOUNT.price
+        visitDate == December.CHRISTMAS.date || visitDate % December.WHOLE_WEEK.date == December.FIRST_SUNDAY.date -> Discount.SPECIAL_DISCOUNT.price
         else -> Discount.NO_DISCOUNT.price
     }
 
