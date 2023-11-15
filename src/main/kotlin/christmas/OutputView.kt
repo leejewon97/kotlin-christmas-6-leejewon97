@@ -60,9 +60,13 @@ class OutputView {
         discounts.forEachIndexed { index, discount -> decidePrintDiscount(index, discount, isWeekend) }
     }
 
-    fun printTotalDiscountPrice() {
+    fun printTotalDiscountPrice(discounts: List<Int>) {
         println(OutputPhrase.TOTAL_DISCOUNT_PRICE.text)
-        // ...
+        if (discounts.sum() == 0) {
+            println(OutputPhrase.NOTHING.text)
+            return
+        }
+        println("-${formatPrice(discounts.sum())}${OutputPhrase.PRICE_UNIT.text}")
     }
 
     fun printAfterDiscountTotalPrice() {
