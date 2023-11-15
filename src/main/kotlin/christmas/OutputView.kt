@@ -69,9 +69,9 @@ class OutputView {
         println("-${formatPrice(discounts.sum())}${OutputPhrase.PRICE_UNIT.text}")
     }
 
-    fun printAfterDiscountTotalPrice() {
+    fun printAfterDiscountTotalPrice(totalPrice: Int, discounts: List<Int>, presentDiscount: Int) {
         println(OutputPhrase.AFTER_DISCOUNT_TOTAL_PRICE.text)
-        // ...
+        println("${formatPrice(totalPrice - discounts.sum() - presentDiscount)}${OutputPhrase.PRICE_UNIT.text}")
     }
 
     fun printDecemberEventBadge() {
