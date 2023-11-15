@@ -18,6 +18,7 @@ class Christmas {
         refreshDiscount()
         OutputView().printEventPreview()
         OutputView().printMenu(orders)
+        OutputView().printBeforeDiscountTotalPrice(totalPrice)
     }
 
     private fun refreshDiscount() {
