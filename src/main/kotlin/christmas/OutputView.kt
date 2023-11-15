@@ -1,5 +1,6 @@
 package christmas
 
+import christmas.enumeration.Discount
 import christmas.enumeration.OutputPhrase
 
 class OutputView {
@@ -27,9 +28,12 @@ class OutputView {
         println("${formatPrice(totalPrice)}${OutputPhrase.PRICE_UNIT.text}")
     }
 
-    fun printPresentMenu() {
+    fun printPresentMenu(presentDiscount: Int) {
         println(OutputPhrase.PRESENT_MENU.text)
-        // ...
+        when (presentDiscount) {
+            Discount.NO_DISCOUNT.price -> println(OutputPhrase.NOTHING.text)
+            else -> println("${OutputPhrase.CHAMPAGNE.text} ${OutputPhrase.MENU_UNIT.text}")
+        }
     }
 
     fun printDiscountList() {
