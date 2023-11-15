@@ -11,9 +11,11 @@ class OutputView {
         println(OutputPhrase.EVENT_PREVIEW.text)
     }
 
-    fun printMenu() {
+    fun printMenu(orders: Map<String, Int>) {
         println(OutputPhrase.ORDERED_MENU.text)
-        // ...
+        orders.forEach { (menu, quantity) ->
+            println("$menu $quantity${OutputPhrase.MENU_UNIT.text}")
+        }
     }
 
     fun printBeforeDiscountTotalPrice() {
