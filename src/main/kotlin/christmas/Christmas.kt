@@ -37,7 +37,13 @@ class Christmas {
     }
 
     private fun dayOfWeekDiscount() {
-        TODO("Not yet implemented")
+        orders.forEach { (menu, quantity) ->
+            if (isWeekend && Menus.valueOf(menu).type == Menus.MenuType.DESSERT) {
+                dayOfWeekDiscount += Discount.DAY_OF_WEEK_DISCOUNT.price * quantity
+            } else if (!isWeekend && Menus.valueOf(menu).type == Menus.MenuType.MAIN) {
+                dayOfWeekDiscount += Discount.DAY_OF_WEEK_DISCOUNT.price * quantity
+            }
+        }
     }
 
     private fun christmasDDayDiscount(visitDate: Int) = when (visitDate) {
