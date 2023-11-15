@@ -7,6 +7,10 @@ class OutputView {
         println(OutputPhrase.HI.text)
     }
 
+    fun printEventPreview() {
+        println(OutputPhrase.EVENT_PREVIEW.text)
+    }
+
     fun printMenu() {
         println("<주문 메뉴>")
         // ...
