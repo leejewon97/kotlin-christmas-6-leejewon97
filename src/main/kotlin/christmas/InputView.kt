@@ -2,6 +2,7 @@ package christmas
 
 import camp.nextstep.edu.missionutils.Console
 import christmas.enumeration.InputPhrase
+import christmas.enumeration.Order
 
 class InputView {
     fun readDate(): Int {
@@ -37,7 +38,7 @@ class InputView {
         val menuAndQuantity = mutableMapOf<String, Int>()
         orders.forEach {
             val order = it.split("-")
-            menuAndQuantity[order[0]] = order[1].toInt()
+            menuAndQuantity[order[Order.MENU.index]] = order[Order.QUANTITY.index].toInt()
         }
         return menuAndQuantity
     }
