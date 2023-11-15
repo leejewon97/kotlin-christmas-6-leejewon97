@@ -12,13 +12,8 @@ class Invalid {
     fun orders(ordersText: String): Boolean {
         val orders = ordersText.split(",")
         return orders.any {
-            invalidFormat(it) || invalidMenu(it.split("-")[Order.MENU.index]) || invalidQuantity(
-                it.split(
-                    "-"
-                )[Order.QUANTITY.index]
-            )
-        } ||
-                overMaxQuantity(orders) || onlyDrink(orders) || notDistinctiveMenu(orders)
+            invalidFormat(it) || invalidMenu(it.split("-")[Order.MENU.index]) || invalidQuantity(it.split("-")[Order.QUANTITY.index])
+        } || overMaxQuantity(orders) || onlyDrink(orders) || notDistinctiveMenu(orders)
     }
 
     private fun notDistinctiveMenu(orders: List<String>): Boolean {
