@@ -14,6 +14,10 @@ class Invalid {
                 overMaxQuantity(orders) || onlyDrink(orders) || notDistinctedMenu(orders)
     }
 
+    private fun onlyDrink(orders: List<String>) = orders.map { it.split("-")[0] }.all { menu ->
+        Menus.entries.filter { it.type == Menus.MenuType.DRINK }.map { it.menu }.contains(menu)
+    }
+
     private fun overMaxQuantity(orders: List<String>) =
         orders.sumOf { it.split("-")[1].toInt() } > 20
 
