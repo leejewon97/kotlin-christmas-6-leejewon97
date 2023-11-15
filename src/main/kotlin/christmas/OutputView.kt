@@ -22,9 +22,9 @@ class OutputView {
         }
     }
 
-    fun printBeforeDiscountTotalPrice() {
+    fun printBeforeDiscountTotalPrice(totalPrice: Int) {
         println(OutputPhrase.BEFORE_DISCOUNT_TOTAL_PRICE.text)
-        // ...
+        println("${formatPrice(totalPrice)}${OutputPhrase.PRICE_UNIT.text}")
     }
 
     fun printPresentMenu() {
