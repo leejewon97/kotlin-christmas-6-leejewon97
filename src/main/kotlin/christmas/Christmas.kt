@@ -23,6 +23,7 @@ class Christmas {
         val discounts = listOf(christmasDDayDiscount, dayOfWeekDiscount, specialDiscount, presentDiscount)
         OutputView().printDiscounts(isWeekend, discounts)
         OutputView().printTotalDiscountPrice(discounts)
+        OutputView().printAfterDiscountTotalPrice(totalPrice, discounts, presentDiscount)
     }
 
     private fun refreshDiscount() {
