@@ -33,7 +33,9 @@ class Christmas {
     }
 
     private fun presentDiscount() {
-        TODO("Not yet implemented")
+        if (totalPrice >= Discount.PRESENT_STANDARD.price) {
+            presentDiscount = Discount.PRESENT_DISCOUNT.price
+        }
     }
 
     private fun dayOfWeekDiscount() {
