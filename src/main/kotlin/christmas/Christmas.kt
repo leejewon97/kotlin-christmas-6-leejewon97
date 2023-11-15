@@ -48,9 +48,9 @@ class Christmas {
 
     private fun dayOfWeekDiscount() {
         orders.forEach { (menu, quantity) ->
-            if (isWeekend && Menus.entries.find { it.menu == menu }!!.type == Menus.MenuType.DESSERT) {
+            if (!isWeekend && Menus.entries.find { it.menu == menu }!!.type == Menus.MenuType.DESSERT) {
                 dayOfWeekDiscount += Discount.DAY_OF_WEEK_DISCOUNT.price * quantity
-            } else if (!isWeekend && Menus.entries.find { it.menu == menu }!!.type == Menus.MenuType.MAIN) {
+            } else if (isWeekend && Menus.entries.find { it.menu == menu }!!.type == Menus.MenuType.MAIN) {
                 dayOfWeekDiscount += Discount.DAY_OF_WEEK_DISCOUNT.price * quantity
             }
         }
