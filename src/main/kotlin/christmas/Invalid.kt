@@ -14,6 +14,9 @@ class Invalid {
                 overMaxQuantity(orders) || onlyDrink(orders) || notDistinctedMenu(orders)
     }
 
+    private fun invalidQuantity(quantity: String) =
+        quantity.toInt() < 1
+
     private fun invalidMenu(menu: String) =
         !Menus.entries.map { it.menu }.contains(menu)
 
