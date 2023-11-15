@@ -12,4 +12,7 @@ class Invalid {
         return orders.any { invalidFormat(it) || invalidMenu(it.split("-")[0]) || invalidQuantity(it.split("-")[1]) } ||
                 overMaxQuantity(orders) || onlyDrink(orders) || notDistinctedMenu(orders)
     }
+
+    private fun invalidFormat(order: String) =
+        order.split("-").size != 2 || order.split("-")[1].toIntOrNull() == null
 }
