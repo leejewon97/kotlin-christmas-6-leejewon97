@@ -62,8 +62,8 @@ class OutputView {
 
     fun printTotalDiscountPrice(discounts: List<Int>) {
         println(OutputPhrase.TOTAL_DISCOUNT_PRICE.text)
-        if (discounts.sum() == 0) {
-            println(OutputPhrase.NOTHING.text)
+        if (discounts.sum() == Discount.NO_DISCOUNT.price) {
+            println("${Discount.NO_DISCOUNT.price}${OutputPhrase.PRICE_UNIT.text}")
             return
         }
         println("-${formatPrice(discounts.sum())}${OutputPhrase.PRICE_UNIT.text}")
