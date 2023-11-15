@@ -15,10 +15,10 @@ enum class OutputPhrase(val text: String) {
     CHAMPAGNE("샴페인 1개"),
     NOTHING("없음");
 
-    enum class Badge(val text: String) {
-        FIVE_THOUSAND("별"),
-        TEN_THOUSAND("트리"),
-        TWENTY_THOUSAND("산타");
+    enum class Badge(val badgeName: String, val price: Int) {
+        STAR("별", 5_000),
+        TREE("트리", 10_000),
+        SANTA("산타", 20_000);
     }
 
     enum class Discount(val text: String) {
