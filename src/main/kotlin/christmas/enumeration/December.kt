@@ -6,5 +6,6 @@ enum class December(val date: Int) {
     CHRISTMAS(25),
     WHOLE_WEEK(7),
     FIRST_WEEKEND(1),
-    SECOND_WEEKEND(2);
+    SECOND_WEEKEND(2),
+    FIRST_SUNDAY(3);
 }
