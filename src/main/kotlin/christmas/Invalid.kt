@@ -14,6 +14,9 @@ class Invalid {
                 overMaxQuantity(orders) || onlyDrink(orders) || notDistinctedMenu(orders)
     }
 
+    private fun overMaxQuantity(orders: List<String>) =
+        orders.sumOf { it.split("-")[1].toInt() } > 20
+
     private fun invalidQuantity(quantity: String) =
         quantity.toInt() < 1
 
