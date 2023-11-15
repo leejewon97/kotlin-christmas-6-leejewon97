@@ -3,6 +3,10 @@ package christmas
 import christmas.enumeration.OutputPhrase
 
 class OutputView {
+    private fun formatPrice(price: Int): String {
+        return price.toString().reversed().chunked(3).joinToString(",").reversed()
+    }
+
     fun printHi() {
         println(OutputPhrase.HI.text)
     }
