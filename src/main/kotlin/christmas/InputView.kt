@@ -19,18 +19,18 @@ class InputView {
         return date!!
     }
 
-    fun readOrders(): Map<String, Int> {
+    fun readOrdersText(): Map<String, Int> {
         println(InputPhrase.MENU.text)
-        val orders = Console.readLine()
-        if (invalidOrders(orders)) {
+        val ordersText = Console.readLine()
+        if (invalidOrders(ordersText)) {
             try {
                 throw IllegalArgumentException(InputPhrase.ERROR_MENU.text)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
-                return readOrders()
+                return readOrdersText()
             }
         }
-        return ordersToMap(orders)
+        return ordersTextToMap(ordersText)
     }
 
     private fun invalidDate(date: Int?): Boolean {
