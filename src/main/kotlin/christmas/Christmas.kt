@@ -8,16 +8,36 @@ class Christmas {
     private val visitDate = InputView().readDate()
     private var christmasDDayDiscount = christmasDDayDiscount(visitDate)
     private val isWeekend = isWeekend(visitDate)
-    private var dayOfWeekDiscount = 0
+    private var dayOfWeekDiscount = Discount.NO_DISCOUNT.price
     private var specialDiscount = specialDiscount(visitDate)
+    private var presentDiscount = Discount.NO_DISCOUNT.price
     private val orders = InputView().readOrdersText()
     private val totalPrice = calculateTotalPrice()
 
     init {
-        if (totalPrice < Discount.ENABLE_DISCOUNT_STANDARD.price) {
-            christmasDDayDiscount = Discount.NO_DISCOUNT.price
-            specialDiscount = Discount.NO_DISCOUNT.price
+        refreshDiscount()
+    }
+
+    private fun refreshDiscount() {
+        when {
+            totalPrice < Discount.ENABLE_DISCOUNT_STANDARD.price -> {
+                christmasDDayDiscount = Discount.NO_DISCOUNT.price
+                specialDiscount = Discount.NO_DISCOUNT.price
+            }
+
+            else -> {
+                dayOfWeekDiscount()
+                presentDiscount()
+            }
         }
+    }
+
+    private fun presentDiscount() {
+        TODO("Not yet implemented")
+    }
+
+    private fun dayOfWeekDiscount() {
+        TODO("Not yet implemented")
     }
 
     private fun christmasDDayDiscount(visitDate: Int) = when (visitDate) {
