@@ -1,8 +1,6 @@
 package christmas
 
-import christmas.enumeration.OutputPhrase
-
 fun main() {
-    println(OutputPhrase.HI.text)
+    OutputView().printHi()
     val christmas = Christmas()
 }
