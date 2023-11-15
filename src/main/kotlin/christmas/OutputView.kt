@@ -41,16 +41,23 @@ class OutputView {
         else -> OutputPhrase.Discount.WEEKDAY.text
     }
 
+    private fun decidePrintDiscount(index: Int, discount: Int, isWeekend: Boolean) {
+        if (discount == Discount.NO_DISCOUNT.price) return
+        when (index) {
+            0 -> println("${OutputPhrase.Discount.CHRISTMAS_D_DAY.text}${formatPrice(discount)}${OutputPhrase.PRICE_UNIT.text}")
+            1 -> println("${dayOfWeekDiscountPhrase(isWeekend)}${formatPrice(discount)}${OutputPhrase.PRICE_UNIT.text}")
+            2 -> println("${OutputPhrase.Discount.SPECIAL.text}${formatPrice(discount)}${OutputPhrase.PRICE_UNIT.text}")
+            3 -> println("${OutputPhrase.Discount.PRESENT.text}${formatPrice(discount)}${OutputPhrase.PRICE_UNIT.text}")
+        }
+    }
+
     fun printDiscounts(isWeekend: Boolean, discounts: List<Int>) {
         println(OutputPhrase.DISCOUNT_LIST.text)
-        discounts.forEachIndexed { index, discount ->
-            when (index) {
-                0 -> println("${OutputPhrase.Discount.CHRISTMAS_D_DAY.text} ${formatPrice(discount)}${OutputPhrase.PRICE_UNIT.text}")
-                1 -> println("${dayOfWeekDiscountPhrase(isWeekend)} ${formatPrice(discount)}${OutputPhrase.PRICE_UNIT.text}")
-                2 -> println("${OutputPhrase.Discount.SPECIAL.text} ${formatPrice(discount)}${OutputPhrase.PRICE_UNIT.text}")
-                3 -> println("${OutputPhrase.Discount.PRESENT.text} ${formatPrice(discount)}${OutputPhrase.PRICE_UNIT.text}")
-            }
+        if (discounts.sum() == 0) {
+            println(OutputPhrase.NOTHING.text)
+            return
         }
+        discounts.forEachIndexed { index, discount -> decidePrintDiscount(index, discount, isWeekend) }
     }
 
     fun printTotalDiscountPrice() {
