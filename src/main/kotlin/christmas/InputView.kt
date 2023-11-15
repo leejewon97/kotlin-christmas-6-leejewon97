@@ -1,14 +1,13 @@
 package christmas
 
 import camp.nextstep.edu.missionutils.Console
-import christmas.enumeration.December
 import christmas.enumeration.InputPhrase
 
 class InputView {
     fun readDate(): Int {
         println(InputPhrase.DATE.text)
         val date = Console.readLine().toIntOrNull()
-        if (invalidDate(date)) {
+        if (Invalid().date(date)) {
             try {
                 throw IllegalArgumentException(InputPhrase.ERROR_DATE.text)
             } catch (e: IllegalArgumentException) {
@@ -22,7 +21,7 @@ class InputView {
     fun readOrdersText(): Map<String, Int> {
         println(InputPhrase.MENU.text)
         val ordersText = Console.readLine()
-        if (invalidOrders(ordersText)) {
+        if (Invalid().orders(ordersText)) {
             try {
                 throw IllegalArgumentException(InputPhrase.ERROR_MENU.text)
             } catch (e: IllegalArgumentException) {
@@ -33,13 +32,13 @@ class InputView {
         return ordersTextToMap(ordersText)
     }
 
-    fun invalidOrders(ordersText: String): Boolean {
+    private fun ordersTextToMap(ordersText: String): Map<String, Int> {
         val orders = ordersText.split(",")
-        return orders.any { invalidFormat(it) || invalidMenu(it[0]) || invalidQuantity(it[1].toIntOrNull()) } ||
-                overMaxQuantity(orders) || onlyDrink(orders) || notDistinctedMenu(orders)
-    }
-
-    private fun invalidDate(date: Int?): Boolean {
-        return date !in December.FIRST.date..December.LAST.date
+        val menuAndQuantity = mutableMapOf<String, Int>()
+        orders.forEach {
+            val order = it.split("-")
+            menuAndQuantity[order[0]] = order[1].toInt()
+        }
+        return menuAndQuantity
     }
 }
