@@ -59,7 +59,7 @@ class Christmas {
 
     private fun christmasDDayDiscount(visitDate: Int) = when (visitDate) {
         in December.FIRST.date..December.CHRISTMAS.date ->
-            Discount.START_DISCOUNT.price + visitDate * Discount.PER_DAY_DISCOUNT.price
+            Discount.START_DISCOUNT.price + (visitDate - 1) * Discount.PER_DAY_DISCOUNT.price
 
         else -> Discount.NO_DISCOUNT.price
     }
